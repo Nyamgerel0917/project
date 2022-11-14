@@ -4,7 +4,6 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 from django.conf import settings
 
-
 class UserProfileManager(BaseUserManager):
     """"Manage for user profiles"""
 
@@ -58,8 +57,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
 
 class ProfileFeedItem(models.Model):
-    """"Profile status update"""
-
+    """Profile status update"""
     user_profile = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
@@ -68,5 +66,5 @@ class ProfileFeedItem(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        """"Return the model as a string"""
+        """Return the model as a string"""
         return self.status_text
